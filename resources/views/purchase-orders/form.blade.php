@@ -63,7 +63,7 @@
                                 <div class="form-group">
                                     <label for="order_date">Order Date <span class="text-danger">*</span></label>
                                     <input type="date" name="order_date" id="order_date" class="form-control @error('order_date') is-invalid @enderror"
-                                           value="{{ old('order_date', $purchaseOrder->order_date ?? date('Y-m-d')) }}" required>
+                                           value="{{ old('order_date', isset($purchaseOrder->order_date) ? $purchaseOrder->order_date->format('Y-m-d') : date('Y-m-d')) }}" required>
                                     @error('order_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="expected_delivery_date">Expected Delivery Date</label>
                                     <input type="date" name="expected_delivery_date" id="expected_delivery_date" class="form-control @error('expected_delivery_date') is-invalid @enderror"
-                                           value="{{ old('expected_delivery_date', $purchaseOrder->expected_delivery_date) }}">
+                                           value="{{ old('expected_delivery_date', isset($purchaseOrder->expected_delivery_date) ? $purchaseOrder->expected_delivery_date->format('Y-m-d') : '') }}">
                                     @error('expected_delivery_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -44,6 +44,8 @@ class PurchaseOrderController extends Controller
             'total' => 'nullable|numeric|min:0',
         ]);
 
+        $validated['created_by'] = auth()->id();
+
         PurchaseOrder::create($validated);
 
         return redirect()->route('purchase-orders.index')->with('success', 'Purchase Order created successfully.');
@@ -54,7 +56,7 @@ class PurchaseOrderController extends Controller
      */
     public function show(PurchaseOrder $purchaseOrder)
     {
-        return view('purchase-orders.index', compact('purchaseOrder'));
+        return view('purchase-orders.show', compact('purchaseOrder'));
     }
 
     /**

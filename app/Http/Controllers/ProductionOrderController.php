@@ -42,6 +42,8 @@ class ProductionOrderController extends Controller
             'notes' => 'nullable|string',
         ]);
 
+        $validated['created_by'] = auth()->id();
+
         ProductionOrder::create($validated);
 
         return redirect()->route('production-orders.index')->with('success', 'Production Order created successfully.');

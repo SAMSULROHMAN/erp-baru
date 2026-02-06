@@ -58,16 +58,16 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-8">
+                    {{-- <div class="col-8">
                         <div class="icheck-primary">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             <label for="remember">
                                 Remember Me
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                     </div>
                     <!-- /.col -->

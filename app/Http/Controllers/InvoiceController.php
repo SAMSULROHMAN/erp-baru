@@ -49,6 +49,8 @@ class InvoiceController extends Controller
             'amount_paid' => 'nullable|numeric|min:0',
         ]);
 
+        $validated['created_by'] = auth()->id();
+
         Invoice::create($validated);
 
         return redirect()->route('invoices.index')->with('success', 'Invoice created successfully.');

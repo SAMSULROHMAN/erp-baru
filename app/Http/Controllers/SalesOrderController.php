@@ -46,6 +46,8 @@ class SalesOrderController extends Controller
             'amount_paid' => 'nullable|numeric|min:0',
         ]);
 
+        $validated['created_by'] = auth()->id();
+
         SalesOrder::create($validated);
 
         return redirect()->route('sales-orders.index')->with('success', 'Sales Order created successfully.');
@@ -56,7 +58,8 @@ class SalesOrderController extends Controller
      */
     public function show(SalesOrder $salesOrder)
     {
-        return view('sales-orders.index', compact('salesOrder'));
+        $salesOrder->load('customer', 'items');
+        return view('sales-orders.show', compact('salesOrder'));
     }
 
     /**
